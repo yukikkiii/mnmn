@@ -1,0 +1,2 @@
+/asset/image/default-profile-image.png: Pixabay license (https://pixabay.com/service/license/)
+    https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/
