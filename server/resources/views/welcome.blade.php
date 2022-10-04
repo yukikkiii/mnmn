@@ -17,12 +17,18 @@
         <style>
             body {
                 font-family: 'Nunito', sans-serif;
+								color: #fff;
+								padding: 20px;
             }
+						.box-wrap {
+							max-width: 1000px;
+							margin: 0 auto;
+						}
         </style>
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-				<div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+				<div class="box-wrap relative items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             
 						<h1>プライバシーポリシー</h1>
 						<div data-v-2d8dd2d8="" data-v-7d2f97e8=""><div data-v-2d8dd2d8=""><h2 data-v-29fda5c2="" data-v-2d8dd2d8="" class="font-weight-bold subtitle-1">
