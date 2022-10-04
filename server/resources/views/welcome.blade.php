@@ -19,6 +19,7 @@
                 font-family: 'Nunito', sans-serif;
 								color: #fff;
 								padding: 20px;
+								background-color: #1a202c;
             }
 						.box-wrap {
 							max-width: 1000px;
