@@ -38,7 +38,7 @@ class CreateTables extends Migration
             $table->unsignedBigInteger('user_id');
             $table->point('point');
             $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrentOnUpdate();
+            $table->timestamp('updated_at')->useCurrent();
 
             $table->foreign('user_id')->on('users')->references('id');
         });
@@ -52,7 +52,7 @@ class CreateTables extends Migration
             $table->unsignedBigInteger('from');
             $table->unsignedBigInteger('to')->nullable();
             $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrentOnUpdate();
+            $table->timestamp('updated_at')->useCurrent();
             $table->unsignedBigInteger('user_location_id');
             $table->softDeletes();
 
