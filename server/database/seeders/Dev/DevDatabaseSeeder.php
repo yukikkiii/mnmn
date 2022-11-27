@@ -18,9 +18,9 @@ class DevDatabaseSeeder extends Seeder
             UserSeeder::class,
             PraySiteSeeder::class,
         ];
-        if (App::isLocal()) {
-            array_push($seeders, AdminSeeder::class);
-        }
+        // if (App::isLocal()) {
+        array_push($seeders, AdminSeeder::class);
+        // }
 
         $this->call($seeders);
     }
