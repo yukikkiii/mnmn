@@ -30,7 +30,7 @@ Future<void> main() async {
   if (authorized.authorizationStatus == AuthorizationStatus.authorized) {
     fcmToken = await FirebaseMessaging.instance.getToken();
   }
-
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp(prefs, fcmToken));
 }
 
@@ -197,11 +197,16 @@ class RootPage extends HookWidget {
 
     // Callbacks
     final updateLocation = useCallback((BuildContext context) async {
+      LocationPermission permission;
+      permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        // ユーザーに位置情報を許可してもらうよう促す
+        permission = await Geolocator.requestPermission();
+      }
       try {
         final location = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high,
         );
-
         final store = context.read<GlobalStore>();
         store.currentLocation = LatLng(location.latitude, location.longitude);
         store.api.updateLocation(<String, dynamic>{

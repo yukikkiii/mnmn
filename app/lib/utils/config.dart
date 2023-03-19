@@ -6,10 +6,9 @@ class Config {
     'HIDE_DEBUG_BANNER': HIDE_DEBUG_BANNER,
     'IS_DEVELOPMENT': IS_DEVELOPMENT,
   };
-
   static const API_URL = String.fromEnvironment(
     'API_URL',
-    defaultValue: 'https://mnmn.gstate.dev',
+    defaultValue: 'https://xs053557.xsrv.jp',
   );
   static const HIDE_DEBUG_BANNER = bool.fromEnvironment(
     'HIDE_DEBUG_BANNER',

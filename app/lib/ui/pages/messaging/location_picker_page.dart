@@ -61,7 +61,7 @@ class LocationPickerPage extends HookWidget {
                       markerAtInitialCameraPosition.value = true;
                     },
                   ),
-                  MapOverlayText(
+                  const MapOverlayText(
                     '赤い円の内側に設置してください',
                   ),
                   Align(
@@ -79,7 +79,7 @@ class LocationPickerPage extends HookWidget {
                           messagingState.draftMessage.location = null;
                           messagingState.goForward();
                         },
-                        child: Text(
+                        child: const Text(
                           'イノリドコロに設置する',
                         ),
                       ),

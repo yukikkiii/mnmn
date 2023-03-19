@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>786706181670-75i0cqsr5o3494jt2uq2idsfrm95f7c6.apps.googleusercontent.com</string>
+	<string>499319589082-o1drdmpul4qvu71l60ccc5g5lhtp3igc.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.786706181670-75i0cqsr5o3494jt2uq2idsfrm95f7c6</string>
+	<string>com.googleusercontent.apps.499319589082-o1drdmpul4qvu71l60ccc5g5lhtp3igc</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBdCm7pxU2BrCOoBBLbXcmhDr3m_gcX_0g</string>
+	<string>AIzaSyAcZ6mi1a5iPz6I_quXHqFVvgkJ8yB-OCs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>786706181670</string>
+	<string>499319589082</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mnmn.app</string>
+	<string>message.mnmn.app</string>
 	<key>PROJECT_ID</key>
-	<string>mnmn-dev</string>
+	<string>mnmn-c521d</string>
 	<key>STORAGE_BUCKET</key>
-	<string>mnmn-dev.appspot.com</string>
+	<string>mnmn-c521d.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:786706181670:ios:174e3cb2225f80902580e7</string>
+	<string>1:499319589082:ios:50a6b41bb48f9ffcb53de3</string>
 </dict>
 </plist>

@@ -1,4 +1,3 @@
-import 'package:geolocator/geolocator.dart';
 import 'package:mnmn/model/all.dart';
 import 'package:mnmn/ui/all.dart';
 
@@ -35,9 +34,9 @@ class MessageRetrievePage extends HookWidget {
             user: User.fromMap(message['from_user'] as Map<String, dynamic>),
             actions: TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
-            children: [
+            children: const [
               Text(
                 'ここでは受け取りができません。',
                 style: TextStyles.accentBold,
@@ -71,9 +70,9 @@ class MessageRetrievePage extends HookWidget {
                 Story.fromMap(message['data'] as Map<String, dynamic>),
               );
             },
-            child: Text('読む'),
+            child: const Text('読む'),
           ),
-          children: [
+          children: const [
             Text('受け取りが完了しました。'),
           ],
         ),
@@ -85,46 +84,53 @@ class MessageRetrievePage extends HookWidget {
       store.availableMessagesCount -= 1;
       store.updateMessageHistory();
     }, const []);
-
+    
     // Lifecycle
     useAutomaticKeepAlive();
+    print('ok3');
     useEffect(() {
       hasLoadedState.value = messagesAvailable != null;
       messagesAvailableState.value = messagesAvailable ?? [];
+      return null;
     }, [messagesAvailable]);
     useEffect(() {
       if (store.retrievePageCamera != null) {
         mapCameraPosState.value = store.retrievePageCamera;
       }
+      return null;
     }, [mapCameraPosUpdate]);
-
     // Layout
     if (!hasLoadedState.value) {
+    
       return const Center(
         child: CircularProgressIndicator(),
       );
     }
-
+    print(messagesAvailableState.value);
     final praySiteIds = <int>{};
     final locations = [
       ...messagesAvailableState.value.map(
         (message) => UserLocation.fromMap(<String, dynamic>{
           'id': message['id'],
-          'point': message['location'] as Map<String, dynamic>,
+          'point': message['location'] != null
+              ? message['location'] as Map<String, dynamic>
+              : "",
           'radius': message['receive_radius'],
         }),
       ),
     ].where(
       (location) {
         // 重複するイノリドコロを削除
+        print("1");
+         print(location.isPraySite);
         if (!location.isPraySite) {
           return true;
         }
         final added = praySiteIds.add(location.id);
+       
         return added;
       },
     ).toList();
-
     return Stack(
       children: [
         LocationPickerMap(
@@ -132,6 +138,7 @@ class MessageRetrievePage extends HookWidget {
           initialCameraPosition: mapCameraPosState.value ??
               context.read<GlobalStore>().currentLocation,
           onSelectLocation: (location) async {
+          
             if (location.isPraySite) {
               if (store.praySiteMessages == 0) {
                 context.showTextSnackBar('イノリドコロで受け取れるまにまにがありません');
@@ -146,6 +153,7 @@ class MessageRetrievePage extends HookWidget {
                 'long': position.longitude,
                 'pray_site_id': location.id,
               });
+              
               if (!(res['success'] as bool? ?? false)) {
                 context.showTextSnackBar('まにまにを受け取るには、イノリドコロに移動する必要があります。');
                 return;
@@ -165,8 +173,11 @@ class MessageRetrievePage extends HookWidget {
           },
         ),
         Selector<GlobalStore, int>(
-          selector: (_, store) => store.praySiteMessages,
+          selector: (_, store) { 
+          return store.praySiteMessages;
+          },
           builder: (_, praySiteMessages, __) {
+          
             if (praySiteMessages > 0) {
               return MapOverlayText(
                 'イノリドコロで受け取れるまにまにが$praySiteMessages件あります',

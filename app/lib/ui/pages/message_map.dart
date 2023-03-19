@@ -28,7 +28,6 @@ class MessageMap extends HookWidget {
         radius: radius,
       )
     };
-
     final body = Stack(
       children: [
         CustomMapMarkerFutureBuilder(

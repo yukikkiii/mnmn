@@ -10,8 +10,10 @@ class UserLocation {
 
   factory UserLocation.fromMap(Map<String, dynamic> map) {
     return UserLocation(
-      id: map['id'] as int,
-      latLng: LatLngExtension.fromPoint(map['point'] as Map<String, dynamic>),
+      id: map['id'] is int ? (map['id'] as int) : 0,
+      latLng: map['point'] is Map<String, dynamic>
+          ? LatLngExtension.fromPoint(map['point'] as Map<String, dynamic>)
+          : LatLng(0, 0),
       radius: map['radius'] as int?,
       name: map['name'] as String?,
     );

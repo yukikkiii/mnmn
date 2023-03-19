@@ -27,7 +27,6 @@ class _MessageHistoryPageState extends State<MessageHistoryPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-
     return DefaultTabController(
       length: 2,
       child: Column(
@@ -199,17 +198,22 @@ class _MessagesList extends HookWidget {
       );
     }
 
+    print(showIcon);
+
     final filteredMessages = statusFilter.value == 0
         ? messages.value
         : messages.value.where((dynamic message) {
             if (statusFilter.value == 4) {
               // お気に入り
+              // ignore: avoid_dynamic_calls
               return message['is_favorite'] as bool;
             } else if (statusFilter.value == 5) {
               // 未受信
+              // ignore: avoid_dynamic_calls
               return message['received_at'] == null;
             } else if (showIcon &&
                 statusFilter.value == 2 &&
+                // ignore: avoid_dynamic_calls
                 message['received_at'] == null) {
               // 届いた手紙: 未開封から未受信を除外
               return false;
@@ -242,8 +246,7 @@ class _MessagesList extends HookWidget {
               ? '未受信'
               : statusLabelsReceiver[status]!;
           text = message['received_at'] == null
-              ? (message['receive_radius'] == 0 ? 'イノリドコロ' : '受け取り場所') +
-                  'で受信してください'
+              ? '${message['receive_radius'] == 0 ? 'イノリドコロ' : '受け取り場所'}で受信してください'
               : (message['text'] as String? ?? '(本文がありません)');
         } else {
           statusLabelText = statusLabels[status]!;
