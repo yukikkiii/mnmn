@@ -47,7 +47,7 @@ class _MessagingPage extends HookWidget {
         ),
         Center(
           child: Container(
-            width: 280,
+            width: 250,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('asset/images/only-earth.png'),
@@ -76,7 +76,7 @@ class _MessagingPage extends HookWidget {
                     '誰かを、自分を、\n想って\n綴ってください',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.grey,
+                      color: Colors.transparent,
                       fontSize: 18,
                       letterSpacing: 5,
                       height: 2,
@@ -91,7 +91,7 @@ class _MessagingPage extends HookWidget {
               child: Stack(
                 children: [
                   const Positioned(
-                    bottom: 0,
+                    bottom: 1,
                     right: 0,
                     child: Image(
                       width: 150,

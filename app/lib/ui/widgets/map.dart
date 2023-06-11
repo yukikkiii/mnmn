@@ -36,6 +36,7 @@ class MapWidget extends StatelessWidget {
         target: latLng,
         zoom: zoom ?? _defaultZoom,
       ),
+      myLocationEnabled: true,
       // markers: {
       //   Marker(
       //     markerId: MarkerId(''),

@@ -38,7 +38,7 @@ class MessageMap extends HookWidget {
             final mapMarker = snapshot.data!;
             return GoogleMap(
               mapType: MapType.normal,
-              myLocationButtonEnabled: false,
+              myLocationEnabled: true,
               initialCameraPosition: CameraPosition(
                 target: circleCenter,
                 zoom: 14,

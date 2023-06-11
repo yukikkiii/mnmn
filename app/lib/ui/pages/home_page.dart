@@ -83,7 +83,7 @@ class HomePageState extends State<HomePage> {
                 width: 25,
               ),
             ),
-            label: '想って綴る',
+            label: '祈る',
           ),
           BottomNavigationBarItem(
             icon: Consumer<GlobalStore>(
@@ -189,7 +189,7 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
       title: title == null
           ? Image.asset(
               'asset/images/logo.png',
-              height: 38,
+              height: 20,
             )
           : Text(title!),
       leading: Builder(

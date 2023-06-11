@@ -20,5 +20,4 @@ export './widgets/all.dart';
 export '../utils/config.dart';
 export 'constants.dart';
 export 'extensions.dart';
-export 'hooks.dart';
 export 'paddings.dart';

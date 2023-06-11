@@ -10,7 +10,7 @@ class ContactPage extends StatefulWidget {
 class _ContactPageState extends State<ContactPage> {
   bool _isChecked = false;
 
-   final _form = FormGroup(
+  final _form = FormGroup(
     {
       'name': FormControl<String>(
         validators: [
@@ -56,35 +56,7 @@ class _ContactPageState extends State<ContactPage> {
         children: [
           const Center(
             child: Text(
-              'お気軽にお問い合わせしてください。',
-            ),
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: Center(
-              // Change button text when light changes state.
-              child: RichText(
-                text:
-                    TextSpan(style: TextStyle(color: Colors.black), children: [
-                  TextSpan(
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        MarkdownDocumentPage.push(
-                          context: context,
-                          title: 'よくある質問',
-                          path: 'asset/text/faq.md',
-                        );
-                      },
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      color: AppColors.accent,
-                      decoration: TextDecoration.underline,
-                    ),
-                    text: 'よくある質問',
-                  ),
-                  TextSpan(text: 'もぜひご確認ください。'),
-                ]),
-              ),
+              'お問い合わせはお気軽にどうぞ。アカウントの削除についても、こちらからお問い合わせください。',
             ),
           ),
 
@@ -164,7 +136,7 @@ class _ContactPageState extends State<ContactPage> {
                               color: AppColors.accent,
                               decoration: TextDecoration.underline,
                             ),
-                            text: '個人情報保護ポリシー',
+                            text: '利用規則',
                           ),
                           TextSpan(text: 'に同意する'),
                         ]),

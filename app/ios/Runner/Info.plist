@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>ja_JP</string>
 	<key>CFBundleDisplayName</key>
@@ -11,7 +13,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
-	<string>6.0</string>
+	<string>7.0</string>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>ja</string>
@@ -33,7 +35,7 @@
 		<string>_dartobservatory._tcp</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>mnmnはカメラへのアクセスを要求しています。</string>
+	<string>このアプリでは、メッセージに添付する写真を撮影するためにカメラを使用します。</string>
 	<key>NSLocalNetworkUsageDescription</key>
 	<string>mnmnはローカル上のデバイスの検索および接続を求めています</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
@@ -43,7 +45,9 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>メッセージの受け取りを行うため、mnmnは位置情報の提供を要求しています。</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>mnmnはアルバムへのアクセスを要求しています。</string>
+	<string>mnmnはメッセージに写真を添付するため、アルバムへのアクセスを要求しています。</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

@@ -23,9 +23,9 @@ if (flutterRoot == null) {
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-flutterVersionCode = '4'
+flutterVersionCode = '7'
 if (flutterVersionCode == null) {
-    flutterVersionCode = '4'
+    flutterVersionCode = '7'
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')

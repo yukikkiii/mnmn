@@ -6,7 +6,6 @@ import 'dart:ui' as ui;
 import 'package:flutter/rendering.dart';
 import 'package:mnmn/ui/all.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final _kotodamaKey = GlobalKey();
@@ -24,24 +23,6 @@ class _KotodamaPageState extends State<KotodamaPage> {
         Expanded(
           flex: 6,
           child: Container(),
-        ),
-        Expanded(
-          flex: 1,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                icon: const Icon(
-                  Icons.share,
-                ),
-                iconSize: 30,
-                color: Theme.of(context).primaryColorLight,
-                onPressed: _share,
-              ),
-              // pl32,
-              // const TwitterShareWidget(),
-            ],
-          ),
         ),
         Expanded(
           flex: 2,
@@ -165,25 +146,6 @@ class _KotodamaPageState extends State<KotodamaPage> {
         isAndroidBackEnable: true,
       ),
     );
-  }
-
-  Future<void> _share() async {
-    final boundary = _kotodamaKey.currentContext!.findRenderObject()!
-        as RenderRepaintBoundary;
-    final image = await boundary.toImage();
-    final imageData = await image.toByteData(
-      format: ui.ImageByteFormat.png,
-    );
-
-    final dir = await getApplicationDocumentsDirectory();
-    final path = '${dir.path}/share.png';
-    final tempFile = File(path);
-    if (!tempFile.existsSync()) {
-      await tempFile.create(recursive: true);
-    }
-    await tempFile.writeAsBytes(imageData!.buffer.asUint8List());
-
-    return Share.shareFiles([path]);
   }
 }
 

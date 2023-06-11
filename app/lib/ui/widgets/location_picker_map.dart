@@ -177,6 +177,7 @@ class LocationPickerMap extends HookWidget {
         return Stack(
           children: [
             GoogleMap(
+              myLocationEnabled: true,
               onMapCreated: (controller) {
                 mapControllerState.value = controller;
                 customInfoWindowController.value!.googleMapController =

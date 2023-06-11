@@ -72,13 +72,13 @@ Widget _buildDialog(
 
   final List<Widget> actions = <Widget>[
     if (!isOkOnly)
-      FlatButton(
+      TextButton(
         child: Text(useYesNo ? 'いいえ' : 'キャンセル'),
         onPressed: () {
           Navigator.pop(context, false);
         },
       ),
-    FlatButton(
+    TextButton(
       child: Text(useYesNo ? 'はい' : 'OK'),
       onPressed: () {
         Navigator.pop(context, true);

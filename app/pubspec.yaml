@@ -56,6 +56,7 @@ dependencies:
  geocoding: ^2.0.1
  share_plus: ^4.5.3
  flutter_launcher_icons: ^0.11.0
+ url_launcher: ^6.1.11
 
 dev_dependencies:
  flutter_test:
@@ -103,3 +104,8 @@ flutter:
   - family: mamelon
     fonts:
      - asset: asset/demo/Mamelon-5-Hi-Regular.otf
+     
+flutter_icons:
+  image_path: "asset/images/app-logo.png"
+  ios: true
+  android: true

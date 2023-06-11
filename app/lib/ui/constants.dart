@@ -5,7 +5,7 @@ import 'package:mnmn/utils/config.dart';
 const APP_NAME = 'mnmn';
 
 class AppColors {
-  static const accent = Color(0xFFDA7474);
+  static const accent = Color(0xFFE63929);
   static const darkGrey = Color(0xFF333333);
   static const praySite = Color(0xFF5346AA);
 }
@@ -14,15 +14,25 @@ const DEFAULT_FONT_SIZE = 16.0;
 
 class TextStyles {
   static const normal = TextStyle(fontSize: DEFAULT_FONT_SIZE);
-  static const normalBlack = TextStyle(fontSize: DEFAULT_FONT_SIZE, color: Colors.black);
+  static const normalBlack =
+      TextStyle(fontSize: DEFAULT_FONT_SIZE, color: Colors.black);
   static const accent = TextStyle(color: AppColors.accent);
-  static const accentBold = TextStyle(color: AppColors.accent, fontWeight: FontWeight.bold);
-  static const accentBoldSmall = TextStyle(color: AppColors.accent, fontWeight: FontWeight.bold, fontSize: DEFAULT_FONT_SIZE * 0.9);
+  static const accentBold =
+      TextStyle(color: AppColors.accent, fontWeight: FontWeight.bold);
+  static const accentBoldSmall = TextStyle(
+      color: AppColors.accent,
+      fontWeight: FontWeight.bold,
+      fontSize: DEFAULT_FONT_SIZE * 0.9);
   static const bold = TextStyle(fontWeight: FontWeight.bold);
-  static const weak = TextStyle(color: Color(0xFFB2B2B2), fontSize: DEFAULT_FONT_SIZE * 0.8);
+  static const weak =
+      TextStyle(color: Color(0xFFB2B2B2), fontSize: DEFAULT_FONT_SIZE * 0.8);
   static const weakLarge = TextStyle(color: Color(0xFFB2B2B2));
-  static const weakBold = TextStyle(color: Color(0xFFB2B2B2), fontSize: DEFAULT_FONT_SIZE * 0.8, fontWeight: FontWeight.bold);
-  static const weakBoldLarge = TextStyle(color: Color(0xFFB2B2B2), fontWeight: FontWeight.bold);
+  static const weakBold = TextStyle(
+      color: Color(0xFFB2B2B2),
+      fontSize: DEFAULT_FONT_SIZE * 0.8,
+      fontWeight: FontWeight.bold);
+  static const weakBoldLarge =
+      TextStyle(color: Color(0xFFB2B2B2), fontWeight: FontWeight.bold);
 }
 
 final outlinedButtonStyleBlackBorder = OutlinedButton.styleFrom(

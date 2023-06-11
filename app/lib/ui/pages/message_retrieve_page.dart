@@ -84,10 +84,9 @@ class MessageRetrievePage extends HookWidget {
       store.availableMessagesCount -= 1;
       store.updateMessageHistory();
     }, const []);
-    
+
     // Lifecycle
     useAutomaticKeepAlive();
-    print('ok3');
     useEffect(() {
       hasLoadedState.value = messagesAvailable != null;
       messagesAvailableState.value = messagesAvailable ?? [];
@@ -101,7 +100,6 @@ class MessageRetrievePage extends HookWidget {
     }, [mapCameraPosUpdate]);
     // Layout
     if (!hasLoadedState.value) {
-    
       return const Center(
         child: CircularProgressIndicator(),
       );
@@ -122,12 +120,12 @@ class MessageRetrievePage extends HookWidget {
       (location) {
         // 重複するイノリドコロを削除
         print("1");
-         print(location.isPraySite);
+        print(location.isPraySite);
         if (!location.isPraySite) {
           return true;
         }
         final added = praySiteIds.add(location.id);
-       
+
         return added;
       },
     ).toList();
@@ -138,7 +136,6 @@ class MessageRetrievePage extends HookWidget {
           initialCameraPosition: mapCameraPosState.value ??
               context.read<GlobalStore>().currentLocation,
           onSelectLocation: (location) async {
-          
             if (location.isPraySite) {
               if (store.praySiteMessages == 0) {
                 context.showTextSnackBar('イノリドコロで受け取れるまにまにがありません');
@@ -153,7 +150,7 @@ class MessageRetrievePage extends HookWidget {
                 'long': position.longitude,
                 'pray_site_id': location.id,
               });
-              
+
               if (!(res['success'] as bool? ?? false)) {
                 context.showTextSnackBar('まにまにを受け取るには、イノリドコロに移動する必要があります。');
                 return;
@@ -173,11 +170,10 @@ class MessageRetrievePage extends HookWidget {
           },
         ),
         Selector<GlobalStore, int>(
-          selector: (_, store) { 
-          return store.praySiteMessages;
+          selector: (_, store) {
+            return store.praySiteMessages;
           },
           builder: (_, praySiteMessages, __) {
-          
             if (praySiteMessages > 0) {
               return MapOverlayText(
                 'イノリドコロで受け取れるまにまにが$praySiteMessages件あります',

@@ -1,4 +1,5 @@
 import 'package:mnmn/ui/all.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -134,26 +135,15 @@ class _SignUpPageState extends State<SignUpPage> {
                           style: TextStyle(color: Colors.black),
                           children: [
                             TextSpan(
-                              text: '会員規約',
+                              text: 'プライバシーポリシー',
                               style: TextStyle(
                                 fontSize: 14.0,
                                 color: AppColors.accent,
                                 decoration: TextDecoration.underline,
                               ),
                               recognizer: TapGestureRecognizer()
-                                ..onTap = () => Navigator.pop(context),
+                                ..onTap = () => _openUrl(),
                             ),
-                            TextSpan(text: '・'),
-                            TextSpan(
-                                text: 'プライバシーポリシー',
-                                style: TextStyle(
-                                  fontSize: 14.0,
-                                  color: AppColors.accent,
-                                  decoration: TextDecoration.underline,
-                                ),
-                                  recognizer: TapGestureRecognizer()
-                                ..onTap = () => Navigator.pop(context),
-                                ),
                             TextSpan(text: 'に同意する'),
                           ]),
                     ),
@@ -218,6 +208,19 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
       ),
     );
+  }
+
+  Future<void> _openUrl() async {
+    const url = 'https://xs053557.xsrv.jp'; //←ここに表示させたいURLを入力する
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+      );
+    } else {
+      throw 'このURLにはアクセスできません';
+    }
   }
 
   Future<void> _onPressedSignUp() async {

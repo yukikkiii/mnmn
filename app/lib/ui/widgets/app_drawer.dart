@@ -56,17 +56,16 @@ class AppDrawer extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  title: const Text('よくある質問'),
+                  title: Text('お問い合わせ'),
                   onTap: () {
-                    MarkdownDocumentPage.push(
-                      context: context,
-                      title: 'よくある質問',
-                      path: 'asset/text/faq.md',
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(builder: (_) => ContactPage()),
                     );
                   },
                 ),
                 ListTile(
-                  title: Text('お問い合わせ'),
+                  title: Text('アカウント削除'),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -110,43 +109,6 @@ class AppDrawer extends StatelessWidget {
                 ],
               ),
             ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              InkWell(
-                onTap: () {
-                  Navigator.push<void>(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => CompanyProfilePage(),
-                    ),
-                  );
-                },
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text('会社概要'),
-                ),
-              ),
-              InkWell(
-                onTap: () {
-                  MarkdownDocumentPage.push(
-                    context: context,
-                    title: '利用規約',
-                    path: 'asset/text/terms.md',
-                  );
-                },
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text('利用規約'),
-                ),
-              ),
-            ].intersperse(
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: Text('|'),
-              ),
-            ),
-          ),
         ].surroundWith(pt24),
       ),
     );

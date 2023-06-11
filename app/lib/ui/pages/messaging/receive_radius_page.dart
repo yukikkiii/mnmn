@@ -35,7 +35,7 @@ class ReceiveRadiusPage extends HookWidget {
       children: [
         GoogleMap(
           mapType: MapType.normal,
-          myLocationButtonEnabled: false,
+          myLocationButtonEnabled: true,
           initialCameraPosition: CameraPosition(
             target: location,
             zoom: 15,
