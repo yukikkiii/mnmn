@@ -35,6 +35,23 @@ class UserController extends Controller
         ];
     }
 
+    public function blockUser(int $id)
+    {
+        $user = \Auth::user();
+        $block_users = $user->block_users;
+        $block_users = explode(',', $block_users);
+        array_push($block_users, $id);
+        $block_users = implode( ",", $block_users )
+
+        $user->update([
+            'block_users' => $block_users,
+        ]);
+
+        return [
+            'success' => true,
+        ];
+    }
+
     public function updateProfile(Request $request)
     {
         $request->validate([

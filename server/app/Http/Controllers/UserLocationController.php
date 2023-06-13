@@ -22,7 +22,7 @@ class UserLocationController extends Controller
                 ->paginate(10);
             return array_merge(
                 ['success' => true],
-               Utils::paginatorToArray($locations),
+                Utils::paginatorToArray($locations),
             );
         }
 

@@ -56,20 +56,20 @@ class ApiAuthController extends Controller
             'email' => 'unique:users|required',
             'password' => ValidationRules::password(),
         ]);
-
         if ($validator->fails()) {
             return [
                 'success' => false,
                 'errors' => $validator->errors(),
             ];
         }
-
-        $user = User::create(array_merge(
+        $merge = array_merge(
             Arr::only($input, ['name', 'email']),
             [
                 'password' => Hash::make($input['password'])
             ],
-        ));
+        );
+
+        $user = User::create($merge);
 
         $token = $user->createToken($input['device_name'])->plainTextToken;
         return [

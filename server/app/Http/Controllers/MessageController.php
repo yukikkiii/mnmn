@@ -220,6 +220,21 @@ class MessageController extends Controller
     }
 
     /**
+     * hide message
+     */
+    public function hide(int $id)
+    {
+        $message = Message::findOrFail($id);
+        $message->update([
+            'hide' => true,
+        ]);
+
+        return [
+            'success' => true,
+        ];
+    }
+
+    /**
      * Open a sealed message.
      */
     public function open(int $id)

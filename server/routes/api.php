@@ -50,6 +50,7 @@ Route::prefix('/v0')->group(function () {
         Route::get('/users/my', [UserController::class, 'getProfile']);
         Route::post('/users/my', [UserController::class, 'updateProfile']);
         Route::post('/users/my/fcm-token', [UserController::class, 'updateFcmToken']);
+        Route::post('/users/my/block-user', [UserController::class, 'blockUser']);
 
         // Contact APIs
         Route::post('/contacts', [ContactController::class, 'create']);
@@ -62,6 +63,7 @@ Route::prefix('/v0')->group(function () {
         Route::get('/messages', [MessageController::class, 'index']);
         Route::post('/messages', [MessageController::class, 'create']);
         Route::post('/messages/retrieve', [MessageController::class, 'retrieve']);
+        Route::post('/messages/{id}/hide', [MessageController::class, 'hide']);
         Route::post('/messages/{id}/open', [MessageController::class, 'open']);
         Route::post('/messages/{id}/favorite', [MessageController::class, 'favorite'])->name('messages.favorite');
         Route::post('/messages/{id}/unfavorite', [MessageController::class, 'favorite'])->name('messages.unfavorite');
