@@ -63,7 +63,8 @@ class ApiRepository {
     });
   }
 
-  Future<Map<String, dynamic>> listPraySites([Map<String, dynamic>? req]) async {
+  Future<Map<String, dynamic>> listPraySites(
+      [Map<String, dynamic>? req]) async {
     return _client._withAuth(_Method.GET, '/pray-sites', req);
   }
 
@@ -109,6 +110,14 @@ class ApiRepository {
 
   Future<Map<String, dynamic>> postContact(Map<String, dynamic> req) {
     return _client._withAuth(_Method.POST, '/contacts', req);
+  }
+
+  Future<Map<String, dynamic>> blockUser(Map<String, dynamic> req) async {
+    return _client._withAuth(_Method.POST, '/blockuser', req);
+  }
+
+  Future<Map<String, dynamic>> hideMessage(int id) async {
+    return _client._withAuth(_Method.POST, '/messages/$id/hide');
   }
 }
 

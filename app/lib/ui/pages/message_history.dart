@@ -1,5 +1,6 @@
 import 'package:mnmn/model/all.dart';
 import 'package:mnmn/ui/all.dart';
+import 'package:mnmn/ui/pages/contact_page.dart';
 
 const statusLabels = {
   0: 'すべて',
@@ -199,6 +200,7 @@ class _MessagesList extends HookWidget {
     }
 
     print(showIcon);
+    // ユーザーがブロックされていないか
 
     final filteredMessages = statusFilter.value == 0
         ? messages.value
@@ -255,7 +257,21 @@ class _MessagesList extends HookWidget {
         }
 
         final showRetrieveButton = showIcon && isNotReceived;
-
+        final from_user_id = userMap['id'] as int;
+        final list = store.currentUser?.blockUsers;
+        // ユーザーがブロックされていないか
+        if (list != null) {
+          if (!isSent && list.contains(from_user_id)) {
+            return SizedBox.shrink();
+          }
+        }
+        final hideMessage = message['hide'] as bool?;
+        // メッセージがオフにできるか
+        if (hideMessage != null) {
+          if (hideMessage) {
+            return SizedBox.shrink();
+          }
+        }
         return ListTile(
           onTap: () => readMessage(message),
           leading: CircleAvatar(
@@ -404,6 +420,27 @@ class _MessagesList extends HookWidget {
                   ),
                 ),
               ],
+              InkWell(
+                onTap: () async {
+                  final String? selectedText = await showDialog<String>(
+                      context: context,
+                      builder: (_) {
+                        return SimpleDialogSample(
+                            message_id: message['id'] as int,
+                            from_user:
+                                message['from_user'] as Map<String, dynamic>);
+                      });
+                  print(selectedText);
+                },
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.more_vert,
+                    color: AppColors.darkGrey,
+                    size: 28,
+                  ),
+                ),
+              ),
             ],
           ),
         );
@@ -420,6 +457,48 @@ class _MessagesList extends HookWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class SimpleDialogSample extends StatelessWidget {
+  final int message_id;
+  final Map<String, dynamic> from_user;
+  SimpleDialogSample({required this.from_user, required this.message_id});
+
+  @override
+  Widget build(BuildContext context) {
+    final store = context.read<GlobalStore>();
+    // States
+    return SimpleDialog(
+      children: [
+        SimpleDialogOption(
+          child: const Text('このメッセージを通報する'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute<void>(builder: (_) => ContactPage()),
+            );
+          },
+        ),
+        SimpleDialogOption(
+          child: const Text('このユーザーをブロック'),
+          onPressed: () async {
+            final req = from_user;
+            await store.api.blockUser(req);
+            store.updateAddressBook();
+            Navigator.pop(context, 'このユーザーをブロックしました');
+          },
+        ),
+        SimpleDialogOption(
+          child: const Text('このメッセージを非表示にする'),
+          onPressed: () async {
+            await store.api.hideMessage(message_id);
+            store.updateAddressBook();
+            Navigator.pop(context, 'このメッセージを非表示にしました');
+          },
+        )
+      ],
     );
   }
 }

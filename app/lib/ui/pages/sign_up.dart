@@ -113,6 +113,12 @@ class _SignUpPageState extends State<SignUpPage> {
 
             //check box
             pt24,
+            const Text(
+              '以下の利用規約をよくお読みいただき、同意の上、ご利用ください。これらの規約は、あなたが当社のサービスを安全に利用するためのガイドラインを提供します。不適切なコンテンツの投稿や悪質な行為は許容されません。',
+              style: TextStyle(
+                fontWeight: FontWeight.normal,
+              ),
+            ),
             Row(
               children: [
                 Checkbox(
@@ -135,14 +141,20 @@ class _SignUpPageState extends State<SignUpPage> {
                           style: TextStyle(color: Colors.black),
                           children: [
                             TextSpan(
-                              text: 'プライバシーポリシー',
+                              text: '利用規約',
                               style: TextStyle(
                                 fontSize: 14.0,
                                 color: AppColors.accent,
                                 decoration: TextDecoration.underline,
                               ),
                               recognizer: TapGestureRecognizer()
-                                ..onTap = () => _openUrl(),
+                                ..onTap = () {
+                                  MarkdownDocumentPage.push(
+                                    context: context,
+                                    title: '利用規約',
+                                    path: 'asset/text/terms.md',
+                                  );
+                                },
                             ),
                             TextSpan(text: 'に同意する'),
                           ]),
@@ -233,6 +245,7 @@ class _SignUpPageState extends State<SignUpPage> {
       'email': formValue['email'],
       'password': formValue['password'],
       'device_name': store.deviceName,
+      'block_users': 'a'
     };
     final res = await store.api.signUp(req);
     if (res['errors'] != null) {
