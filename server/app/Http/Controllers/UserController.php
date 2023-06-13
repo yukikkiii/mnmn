@@ -46,7 +46,7 @@ class UserController extends Controller
         $block_users = implode(",", $block_users);
 
         $user->update([
-            'block_users' => '3',
+            'block_users' => $block_users,
         ]);
 
         return [
