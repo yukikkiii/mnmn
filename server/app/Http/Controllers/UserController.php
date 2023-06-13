@@ -36,6 +36,9 @@ class UserController extends Controller
 
     public function blockUser(Request $request)
     {
+        $request->validate([
+            'id' => 'required',
+        ]);
         $user = \Auth::user();
         $block_users = $user->block_users;
         $block_users = explode(',', $block_users);
