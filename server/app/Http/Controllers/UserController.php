@@ -34,16 +34,16 @@ class UserController extends Controller
         ];
     }
 
-    public function blockUser(int $id)
+    public function blockUser(Request $request)
     {
         $user = \Auth::user();
-        $block_users = $user->block_users;
+        $block_users = $request->input('id');
         $block_users = explode(',', $block_users);
         array_push($block_users, $id);
         $block_users = implode(",", $block_users);
 
         $user->update([
-            'block_users' => '3',
+            'block_users' => $block_users,
         ]);
 
         return [
