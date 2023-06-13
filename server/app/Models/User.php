@@ -26,6 +26,7 @@ class User extends Authenticatable
         'profile_image',
         'fcm_token',
         'self_introduction',
+        'block_users',
     ];
 
     /**
