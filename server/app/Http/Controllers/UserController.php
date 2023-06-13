@@ -29,7 +29,6 @@ class UserController extends Controller
         $user->update([
             'fcm_token' => $request->input('fcm_token'),
         ]);
-
         return [
             'success' => true,
         ];

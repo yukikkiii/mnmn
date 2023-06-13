@@ -41,7 +41,6 @@ class ApiAuthController extends Controller
         if (!$user || !Hash::check($request->password, $user->password)) {
             abort(401);
         }
-
         return [
             'token' => $user->createToken($request->device_name)->plainTextToken,
         ];
