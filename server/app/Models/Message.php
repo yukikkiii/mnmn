@@ -28,6 +28,7 @@ class Message extends Model
         'received_at',
         'is_favorite',
         'pray_site_id',
+        'hide'
     ];
 
     /**
