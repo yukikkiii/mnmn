@@ -8,7 +8,7 @@ class Config {
   };
   static const API_URL = String.fromEnvironment(
     'API_URL',
-    defaultValue: 'http://127.0.0.1:8000',
+    defaultValue: 'https://xs053557.xsrv.jp',
   );
   static const HIDE_DEBUG_BANNER = bool.fromEnvironment(
     'HIDE_DEBUG_BANNER',

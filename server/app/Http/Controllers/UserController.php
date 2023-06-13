@@ -41,7 +41,7 @@ class UserController extends Controller
         $block_users = $user->block_users;
         $block_users = explode(',', $block_users);
         array_push($block_users, $id);
-        $block_users = implode( ",", $block_users )
+        $block_users = implode(",", $block_users);
 
         $user->update([
             'block_users' => $block_users,
